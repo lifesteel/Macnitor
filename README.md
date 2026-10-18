@@ -1,0 +1,1 @@
+Kurulum çok basit releases kısmından versiyon 1.0'a tıklayıp zip dosyayı indirip direkt Macnitoru çalıştırabilirsiniz, dockta gözükmeyecektir. Menü çubuğunda küçük detay verir tıklarsanız menü büyüyüp detaylı araçları kullanabilir hale geleceksiniz.
