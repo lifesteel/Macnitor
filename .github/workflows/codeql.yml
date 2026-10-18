@@ -44,7 +44,7 @@ jobs:
       matrix:
         include:
         - language: swift
-          build-mode: manual # <-- Burayı 'autobuild' yerine 'manual' yaptık
+          build-mode: manual
 
     steps:
     - name: Checkout repository
@@ -79,10 +79,7 @@ jobs:
       if: matrix.build-mode == 'manual'
       shell: bash
       run: |
-        # Eğer projen bir Xcode Workspace veya Project ise burayı kendine göre ayarla:
-        # Örnek (Workspace için): xcodebuild -workspace Macnitor.xcworkspace -scheme Macnitor -configuration Release build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
-        # Örnek (Tekil Project için):
-        xcodebuild -project Macnitor.xcodeproj -scheme Macnitor -configuration Release build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+        swift build -c release
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v4
