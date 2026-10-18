@@ -78,6 +78,7 @@ jobs:
     - name: Run manual build steps
       if: matrix.build-mode == 'manual'
       shell: bash
+      working-directory: macOsdeger/Macnitor
       run: |
         swift build -c release
 
