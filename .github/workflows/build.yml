@@ -1,0 +1,28 @@
+name: macOS Build CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    name: Build Macnitor App
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Build Xcode Project
+      run: |
+        cd macOsdeger/Macnitor
+        echo "Uygulama derleniyor..."
+        
+        if xcodebuild -project macnitor.xcodeproj -scheme macnitor -configuration Release build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO; then
+          echo "Derleme başarılı!"
+        else
+          echo "Küçük harfli şema bulunamadı, 'Macnitor' deneniyor..."
+          xcodebuild -project macnitor.xcodeproj -scheme Macnitor -configuration Release build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+        fi
